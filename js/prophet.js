@@ -8,6 +8,14 @@ fetch(requestURL).then(function (response) {return response.json();})
     prophets.forEach(displayProphets);
   });
   
+  if (prophet.order == "1")
+  auxOrder = "st";
+else if (prophet.order == "2")
+  auxOrder = "nd";
+else if (prophet.order == "3")
+  auxOrder = "rd";
+else
+  auxOrder = "th";
 
   
   function displayProphets(prophet) {
@@ -16,7 +24,7 @@ fetch(requestURL).then(function (response) {return response.json();})
     let birthdate = document.createElement('p');
     let birthPlace = document.createElement('p');
     let portrait = document.createElement('img');
-     
+    let auxOrder = "";
   
     
     fullName.textContent = `${prophet.name} ${prophet.lastname}`; 
@@ -26,7 +34,7 @@ fetch(requestURL).then(function (response) {return response.json();})
 
    
     portrait.setAttribute('src', prophet.imageurl);
-    portrait.setAttribute('alt', 'Portait of ' + prophet.name + ' ' + prophet.lastname);
+    portrait.setAttribute('alt', `Portrait of ${prophet.name} ${prophet.lastname} - ${prophet.order}${auxOrder} Latter-day President`);
     portrait.setAttribute('loading', 'lazy');
   
 
